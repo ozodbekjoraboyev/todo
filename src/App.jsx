@@ -12,8 +12,8 @@ function App() {
 
   useEffect(() => {
     axios.get("https://jsonplaceholder.typicode.com/todos").then((res) => {
-      console.log(res.data.slice(0,10));
-      settTodo(res.data.slice(0,10));
+      console.log(res.data.slice(0, 10));
+      settTodo(res.data.slice(0, 10));
     });
   }, []);
 
@@ -33,8 +33,8 @@ function App() {
 
   return (
     <>
-      <div className="">
-        <div className="flex gap-3">
+      <div className=" w-[900px] container text-center m-auto justify-center">
+        <div className="flex gap-3 justify-center">
           <div className="flex items-center border-1 px-3 p-2 rounded">
             <input
               value={inputQidirish}
@@ -71,7 +71,7 @@ function App() {
             onClick={() => {}}
             className="cursor-pointer bg-blue-600 px-4 py-1 rounded text-white"
           >
-            Delet
+            Mistake
           </button>
         </div>
         {filteredTodo.map((item, id) => {
@@ -170,48 +170,45 @@ function App() {
         //   </div>
         // </div>
         <div
-  onClick={() => {
-    setModalOpen(false);
-  }}
-  className="bg-blue-100  opacity-90 fixed inset-0 flex items-center justify-center left-0 right-0 "
->
-  <div
-    onClick={(e) => e.stopPropagation()}
-    className="bg-white p-6 rounded-lg "
-  >
-    <h2 className="text-lg font-bold">Tahrirlash</h2>
-    <input
-      type="text"
-      value={editingItem?.title || ""}
-      onChange={(e) =>
-        setEditingItem({ ...editingItem, title: e.target.value })
-      }
-      className="border p-2 w-full mt-2 rounded"
-    />
-    <div className="flex justify-end gap-2 mt-4">
-      <button
-        onClick={() => setModalOpen(false)}
-        className="bg-gray-400 px-4 py-2 rounded"
-      >
-        Bekor qilish
-      </button>
-      <button
-        onClick={() => {
-          settTodo(
-            todo.map((t) =>
-              t.id === editingItem.id ? editingItem : t
-            )
-          );
-          setModalOpen(false);
-        }}
-        className="bg-blue-600 text-white px-4 py-2 rounded"
-      >
-        Saqlash
-      </button>
-    </div>
-  </div>
-</div>
-
+          onClick={() => {
+            setModalOpen(false);
+          }}
+          className="bg-blue-100  opacity-90 fixed inset-0 flex items-center justify-center left-0 right-0 "
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white p-6 rounded-lg "
+          >
+            <h2 className="text-lg font-bold">Tahrirlash</h2>
+            <input
+              type="text"
+              value={editingItem?.title || ""}
+              onChange={(e) =>
+                setEditingItem({ ...editingItem, title: e.target.value })
+              }
+              className="border p-2 w-full mt-2 rounded"
+            />
+            <div className="flex justify-end gap-2 mt-4">
+              <button
+                onClick={() => setModalOpen(false)}
+                className="bg-gray-400 px-4 py-2 rounded"
+              >
+                Bekor qilish
+              </button>
+              <button
+                onClick={() => {
+                  settTodo(
+                    todo.map((t) => (t.id === editingItem.id ? editingItem : t))
+                  );
+                  setModalOpen(false);
+                }}
+                className="bg-blue-600 text-white px-4 py-2 rounded"
+              >
+                Saqlash
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </>
   );
